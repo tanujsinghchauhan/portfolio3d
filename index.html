@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>portfolio3d</title>
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <div id="loading-screen">
+      <div style="width: 320px">
+        <div id="boot-text" style="margin-bottom: 10px; font-size: 13px">
+          INITIALIZING_BOOT_SEQUENCE...
+        </div>
+        <div
+          style="
+            width: 100%;
+            height: 2px;
+            background: rgba(217, 255, 138, 0.1);
+            margin-bottom: 20px;
+          "
+        >
+          <div
+            id="progress-bar"
+            style="
+              width: 0%;
+              height: 100%;
+              background: #d9ff8a;
+              transition: width 0.2s;
+            "
+          ></div>
+        </div>
+        <button id="enter-btn">ENTER_ROOM</button>
+      </div>
+    </div>
+
+    <style>
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #080c08;
+        z-index: 999999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Courier New", monospace;
+        color: #d9ff8a;
+        transition: opacity 1.2s ease-in-out;
+      }
+      #enter-btn {
+        display: none;
+        width: 100%;
+        background: #d9ff8a;
+        color: #000;
+        border: none;
+        padding: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      #enter-btn:hover {
+        background: #fff;
+        box-shadow: 0 0 15px #d9ff8a;
+      }
+    </style>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
