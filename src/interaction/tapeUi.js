@@ -1,16 +1,20 @@
+import * as THREE from "three";
+
 let audioCtx, analyser, dataArray, source;
 let isPlaying = false;
 let trackIndex = 0;
 
+// PRODUCTION FIX: Ensure these files are in your /public/tracks/ folder
 const playlist = [
-  { name: "Ain't No Sunshine", src: "./src/assets/track2.mp3" },
-  { name: "Time in a Bottle", src: "./src/assets/track5.mp3" },
-  { name: "Great Balls of Fire", src: "./src/assets/track3.mp3" },
-  { name: "Paint it Black", src: "./src/assets/track4.mp3" },
-  { name: "Back on The Rocks", src: "./src/assets/track1.mp3" },
+  { name: "Ain't No Sunshine", src: "/tracks/track2.mp3" },
+  { name: "Time in a Bottle", src: "/tracks/track5.mp3" },
+  { name: "Great Balls of Fire", src: "/tracks/track3.mp3" },
+  { name: "Paint it Black", src: "/tracks/track4.mp3" },
+  { name: "Back on The Rocks", src: "/tracks/track1.mp3" },
 ];
 
 const audio = new Audio();
+// Essential for Web Audio API visualizers in production
 audio.crossOrigin = "anonymous";
 
 export function createTapePanel() {
@@ -34,6 +38,8 @@ export function createTapePanel() {
     backgroundImage:
       "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%)",
     backgroundSize: "100% 4px",
+    pointerEvents: "auto",
+    userSelect: "none",
   });
 
   panel.innerHTML = `
@@ -49,9 +55,9 @@ export function createTapePanel() {
     <canvas id="visualizer" width="260" height="60" style="width: 100%; background: #050805; border: 1px solid #1a221a; margin-bottom: 15px;"></canvas>
 
     <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 10px;">
-      <button id="prevTrack" style="background:none; border:1px solid #d9ff8a; color:#d9ff8a; cursor:pointer; padding: 5px;">[<<]</button>
-      <button id="playToggle" style="background:#d9ff8a; border:none; color:#000; cursor:pointer; padding: 8px 20px; font-weight:bold; font-size: 12px;">LOAD_TAPE</button>
-      <button id="nextTrack" style="background:none; border:1px solid #d9ff8a; color:#d9ff8a; cursor:pointer; padding: 5px;">[>>]</button>
+      <button id="prevTrack" class="tape-btn" style="background:none; border:1px solid #d9ff8a; color:#d9ff8a; cursor:pointer; padding: 5px;">[<<]</button>
+      <button id="playToggle" class="tape-btn" style="background:#d9ff8a; border:none; color:#000; cursor:pointer; padding: 8px 20px; font-weight:bold; font-size: 12px;">LOAD_TAPE</button>
+      <button id="nextTrack" class="tape-btn" style="background:none; border:1px solid #d9ff8a; color:#d9ff8a; cursor:pointer; padding: 5px;">[>>]</button>
     </div>
 
     <button id="closeTape" style="width: 100%; background: none; border: 1px solid rgba(217, 255, 138, 0.2); color: rgba(217, 255, 138, 0.5); cursor: pointer; font-size: 9px; padding: 4px; margin-top: 5px;">EJECT_INTERFACE</button>
@@ -76,13 +82,14 @@ function setupAudioLogic(panel) {
     source = audioCtx.createMediaElementSource(audio);
     source.connect(analyser);
     analyser.connect(audioCtx.destination);
-    analyser.fftSize = 64; // Small for chunky bars
+    analyser.fftSize = 64;
     dataArray = new Uint8Array(analyser.frequencyBinCount);
     drawVisualizer();
   }
 
   function drawVisualizer() {
     requestAnimationFrame(drawVisualizer);
+    if (!analyser) return;
     analyser.getByteFrequencyData(dataArray);
 
     ctx.fillStyle = "#050805";
@@ -93,12 +100,9 @@ function setupAudioLogic(panel) {
 
     for (let i = 0; i < dataArray.length; i++) {
       const barHeight = dataArray[i] / 4;
-      // Sickly green glow color
       ctx.fillStyle = `rgb(217, 255, 138)`;
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 8;
       ctx.shadowColor = "#d9ff8a";
-
-      // Draw centered bars
       ctx.fillRect(x, (canvas.height - barHeight) / 2, barWidth - 2, barHeight);
       x += barWidth;
     }
@@ -107,7 +111,9 @@ function setupAudioLogic(panel) {
   function loadTrack() {
     audio.src = playlist[trackIndex].src;
     trackNameDisp.innerText = playlist[trackIndex].name;
-    if (isPlaying) audio.play();
+    if (isPlaying) {
+      audio.play().catch((e) => console.error("Playback failed:", e));
+    }
   }
 
   playBtn.onclick = () => {
@@ -120,7 +126,7 @@ function setupAudioLogic(panel) {
       statusDisp.innerText = "STOPPED";
       statusDisp.style.color = "#f44336";
     } else {
-      audio.play();
+      audio.play().catch((e) => console.error("Playback failed:", e));
       playBtn.innerText = "STOP_REEL";
       statusDisp.innerText = "PLAYING";
       statusDisp.style.color = "#d9ff8a";

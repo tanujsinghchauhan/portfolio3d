@@ -84,7 +84,7 @@ setupRaycaster(scene, camera, (name, object) => {
       "Hello, I am Tanuj Singh Chauhan you are inside my portfolio. I am a developer that likes to develop things that are of interest to me. I am mostly focused on Full Stack Devlopment, Cloud Computing, Data Science and Machnine Learning, 2D and 3D design and anything else that comes to me as interesting. Feel free to explore around but, don't go outside the room in darkness.",
       controls,
     );
-  } else if (name.includes("tv")) {
+  } else if (name.includes("fileholder3")) {
     showPanel(
       panelObj,
       "Final Message",
@@ -139,7 +139,7 @@ setupRaycaster(scene, camera, (name, object) => {
       "These cabinets are filled with information about my projects some are public info and some are not. You can look up each cabinet to see what I have worked on.",
       controls,
     );
-  } else if (name.includes("fileholder3")) {
+  } else if (name.includes("tv")) {
     showPanel(
       panelObj,
       "Work Experience",
