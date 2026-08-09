@@ -6,9 +6,9 @@ let trackIndex = 0;
 
 // PRODUCTION FIX: Ensure these files are in your /public/tracks/ folder
 const playlist = [
-  { name: "Ain't No Sunshine", src: "/tracks/track2.mp3" },
+  { name: "In The Shadow of the Valley", src: "/tracks/track2.mp3" },
   { name: "Time in a Bottle", src: "/tracks/track5.mp3" },
-  { name: "Great Balls of Fire", src: "/tracks/track3.mp3" },
+  { name: "Sway", src: "/tracks/track3.mp3" },
   { name: "Paint it Black", src: "/tracks/track4.mp3" },
   { name: "Back on The Rocks", src: "/tracks/track1.mp3" },
 ];

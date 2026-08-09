@@ -122,7 +122,7 @@ setupRaycaster(scene, camera, (name, object) => {
     showPanel(
       panelObj,
       "storage",
-      "I store all my certificates and degrees here for good measure.",
+      "I store all my certificates and degrees here for good measure like AWS Certified Solutions Architect – Associate (SAA-C03) and AWS Certified Cloud Practitioner (CLF-C02).",
       controls,
     );
   } else if (name.includes("tablecabinet2")) {
@@ -143,7 +143,7 @@ setupRaycaster(scene, camera, (name, object) => {
     showPanel(
       panelObj,
       "Work Experience",
-      "I had a couple of great internships. As a Development Intern at VitaData Startup V-Nest, I worked on improving the Doctor login portal's UI/UX and developed role-based authentication. During my Summer Intern gig at Greaves Travel, I set up scalable cloud storage with MongoDB Atlas, built city autocomplete, and implemented secure role-based login. Before that, I spent time as a Full Stack Developer for the CodeChef Club, where I built the official website using React.js and Tailwind CSS, which boosted the load speed by 30%. I also did a lot of work on the CIMP platform, like designing the UI and updating the backend with Express.js, while collaborating in an Agile team.",
+      "As a Full Stack Development Intern at SAER Technologies Private Limited, I integrated the WhatsApp Cloud API for a automated messaging tool and designed service modules for ServiceTasker to improve customer-vendor workflows, while testing REST APIs using Postman and building a review gathering feature via the Google Places API. During my Summer Intern gig at Greaves Travel India Private Limited, I implemented MongoDB Atlas workflows for scalable cloud storage, applied an MVC architecture to an Airlines dataset project with a city autocomplete feature, and built role-based login systems with JWT authentication and MySQL stored procedures. Additionally, as a Development Intern at VitaData, V-Nest, I designed responsive UI/UX pages to improve usability and implemented role-based authentication for hospital staff with input validation and protected routes. Previously, I served as a Full-Stack Developer and Core Organizing Member for the CodeChef VITC Chapter, where I managed the coordination, planning, and smooth execution of hackathons and major technical events.",
       controls,
     );
   } else if (name.includes("Cabinet9")) {
@@ -165,17 +165,25 @@ setupRaycaster(scene, camera, (name, object) => {
   } else if (name.includes("Cabinet11")) {
     showPanel(
       panelObj,
-      "ACCESS_DENIED",
-      "Sorry the repo is private.",
+      "JLOX",
+      "JLOX is a Java implementation of the Lox programming language described in Robert Nystrom's book, Crafting Interpreters. The project implements a complete interpreter pipeline from scanning and parsing to resolution and runtime execution, with support for functions, classes, inheritance, arrays, control flow, and a small built-in standard library.",
+      "https://github.com/tanujsinghchauhan/JLOX",
       controls,
     );
   } else if (name.includes("Cabinet12")) {
-    showPanel(panelObj, "ACCESS_DENIED", "I signed an NDA for that.", controls);
+    showPanel(
+      panelObj,
+      "CollabSheet",
+      "A lightweight, robust, and real-time collaborative spreadsheet application built with Next.js, TypeScript, Tailwind CSS, and Firebase. CollabSheet allows multiple users to edit spreadsheets simultaneously, complete with live presence tracking, cell formatting, a comprehensive formula engine, and robust data export tools.",
+      "https://github.com/tanujsinghchauhan/realtime-collaborative-spreadsheet",
+      controls,
+    );
   } else if (name.includes("Cabinet8")) {
     showPanel(
       panelObj,
-      "ACCESS_DENIED",
-      "Trust me you don't want to see this.",
+      "Self Healing Platform",
+      "This is a cloud-native microservices platform featuring autonomous self-healing capabilities and log analysis powered by a localized Large Language Model (LLM) RAG pipeline.",
+      "https://github.com/tanujsinghchauhan/self-healing-platform",
       controls,
     );
   } else if (name.includes("Cabinet7")) {
